@@ -1,2 +1,16 @@
 # mvvm_architecture
-A clean, scalable Flutter template using MVVM + Provider. Decouples UI from logic via Feature-based modules, a clean Data Layer (Repository/Service), and reusable widgets. Ideal for beginners to startups, it offers a production-ready Login→Home flow with centralised theming—built for maintainability and rapid, structured development.
+
+A new Flutter project.
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

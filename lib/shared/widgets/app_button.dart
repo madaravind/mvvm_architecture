@@ -1,28 +1,34 @@
 import 'package:flutter/material.dart';
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_text_styles.dart';
 
 class AppButton extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
-  final bool loading;
+  final bool disabled;
 
   const AppButton({
     super.key,
     required this.title,
     required this.onTap,
-    this.loading = false,
+    this.disabled = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: loading ? null : onTap,
-      child: loading
-          ? const SizedBox(
-        height: 18,
-        width: 18,
-        child: CircularProgressIndicator(strokeWidth: 2),
-      )
-          : Text(title),
+      onPressed: disabled ? null : onTap,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: disabled
+            ? Colors.grey
+            : AppColors.primary(context),
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      ),
+      child: Text(
+        title,
+        style: AppTextStyles.button(context),
+      ),
     );
   }
 }

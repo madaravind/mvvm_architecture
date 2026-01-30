@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../core/locale/locale_view_model.dart';
 import '../../../core/theme/theme_view_model.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../l10n/app_localizations.dart';
 import '../viewmodel/auth_view_model.dart';
 import '../../../app/app_routes.dart';
 import '../../../shared/widgets/app_button.dart';
@@ -28,6 +30,31 @@ class LoginView extends StatelessWidget {
         foregroundColor: AppColors.textPrimary(context),
         elevation: 0,
         actions: [
+          PopupMenuButton<Locale>(
+            icon: Icon(Icons.language, color: AppColors.iconPrimary(context)),
+            onSelected: (locale) {
+              if (locale.languageCode == 'system') {
+                context.read<LocaleViewModel>().setSystemLocale();
+              } else {
+                context.read<LocaleViewModel>().setLocale(locale);
+              }
+            },
+            itemBuilder: (_) => [
+              const PopupMenuItem(
+                value: Locale('en'),
+                child: Text('English'),
+              ),
+              const PopupMenuItem(
+                value: Locale('ta'),
+                child: Text('Tamil'),
+              ),
+              const PopupMenuItem(
+                value: Locale('system'),
+                child: Text('System'),
+              ),
+            ],
+          ),
+
           PopupMenuButton<ThemeMode>(
             icon: Icon(
               themeVM.themeMode == ThemeMode.dark
@@ -63,7 +90,7 @@ class LoginView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  'Login',
+                  AppLocalizations.of(context)!.login,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 24,

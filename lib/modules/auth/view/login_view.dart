@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/locale/locale_view_model.dart';
+import '../../../core/theme/app_text_styles.dart';
 import '../../../core/theme/theme_view_model.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../l10n/app_localizations.dart';
@@ -26,12 +27,15 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background(context),
       appBar: AppBar(
+        title: Text(
+          "Welcome to MVVM",
+          style: AppTextStyles.title(context),
+        ),
         backgroundColor: AppColors.primary(context),
-        foregroundColor: AppColors.textPrimary(context),
         elevation: 0,
         actions: [
           PopupMenuButton<Locale>(
-            icon: Icon(Icons.language, color: AppColors.iconPrimary(context)),
+            icon: Icon(Icons.language),
             onSelected: (locale) {
               if (locale.languageCode == 'system') {
                 context.read<LocaleViewModel>().setSystemLocale();
@@ -62,7 +66,6 @@ class LoginView extends StatelessWidget {
                   : themeVM.themeMode == ThemeMode.light
                   ? Icons.light_mode
                   : Icons.settings,
-              color: AppColors.iconPrimary(context), // <- dynamically chooses color
             ),
             onSelected: (mode) => themeVM.setTheme(mode),
             itemBuilder: (_) => [
@@ -118,17 +121,7 @@ class LoginView extends StatelessWidget {
                     : AppButton(
                   title: 'Login',
                   onTap: () async {
-                    final success = await vm.login(
-                      emailController.text.trim(),
-                      passwordController.text.trim(),
-                    );
-
-                    if (success) {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        AppRoutes.home,
-                      );
-                    }
+                    Navigator.pushReplacementNamed(context,AppRoutes.home,);
                   },
                 ),
               ],

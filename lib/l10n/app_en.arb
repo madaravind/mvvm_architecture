@@ -1,6 +1,4 @@
 {
   "login": "Login",
-  "@login": {
-    "description": "Login title"
-  }
+  "about": "About me"
 }

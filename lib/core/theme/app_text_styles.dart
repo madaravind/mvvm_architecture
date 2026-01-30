@@ -18,4 +18,32 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: Colors.white, // buttons always white text
   );
+
+
+  static TextStyle appBarTitle(BuildContext context) => TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle title(BuildContext context) => TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle subTitle(BuildContext context) => TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.normal,
+  );
+
+  static TextStyle chatMsg(BuildContext context,{Color color = Colors.white}) => TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+    color: color,
+  );
+
+  static TextStyle chatMsgTime(BuildContext context,{Color color = Colors.white}) => TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.normal,
+    color: color,
+  );
 }
